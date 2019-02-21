@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--1. 构造器实例化,使用最多-->
+    <bean id="clazz01" class="com.springstu02.ioc.Clazz01" />
+    <!--2. 静态工厂方法实例化,解决系统遗留问题-->
+    <bean id="clazz02" class="com.springstu02.ioc.Clazz02Factory" factory-method="newInstance" />
+    <!--3. 实例化工厂方法实例化, 解决系统遗留问题-->
+    <!--factory-bean :  工厂bean  factory-method: 工厂方法-->
+    <bean id="clazz03Factory" class="com.springstu02.ioc.Clazz03Factory" />
+    <bean id="clazz03" factory-bean="clazz03Factory" factory-method="newInstance" />
+    <!--4. 实现 factoryBean 接口的实例化: 实例工厂变种.如集成myBatis 框架使用: org.mybatis.spring.sqlSessionFactoryBean-->
+    <bean id="clazz04" class="com.springstu02.ioc.Clazz04Factory" >
+        <property name="username" value="LQQB"/>
+    </bean>
+
+</beans>
